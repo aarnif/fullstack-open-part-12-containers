@@ -16,7 +16,7 @@ router.post('/', async (req, res) => {
     done: false
   })
   const value = await get('todo_count')
-  await set('todo_count', value + 1)
+  await set('todo_count', Number(value) + 1)
   res.send(todo);
 });
 
