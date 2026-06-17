@@ -52,7 +52,7 @@ singleRouter.put('/', async (req, res) => {
     },
     { new: true },
   )
-  res.status(200);
+  res.status(200).json(updatedTodo);
 });
 
 router.use('/:id', findByIdMiddleware, singleRouter)
