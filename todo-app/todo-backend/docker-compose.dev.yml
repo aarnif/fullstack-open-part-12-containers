@@ -30,6 +30,15 @@ services:
       - REDIS_URL=redis://redis:6379
       - MONGO_URL=mongodb://the_username:the_password@mongo:27017/the_database
     container_name: todo-backend-dev
+  nginx:
+    image: nginx:1.29
+    volumes:
+      - ./nginx.dev.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - 8080:80
+    container_name: todo-backend-dev-reverse-proxy
+    depends_on:
+      - server
 
 volumes:
   mongo_data:
